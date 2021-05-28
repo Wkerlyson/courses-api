@@ -57,6 +57,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -67,5 +72,29 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<activatedProperties>development</activatedProperties>
+			</properties>
+		</profile>
+		<profile>
+			<id>homologacao</id>
+			<properties>
+				<activatedProperties>homologacao</activatedProperties>
+			</properties>
+		</profile>
+		<profile>
+			<id>production</id>
+			<properties>
+				<activatedProperties>production</activatedProperties>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
